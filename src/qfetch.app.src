@@ -1,0 +1,17 @@
+{application, qfetch, [
+  {description, "quotes fetches"},
+  {vsn, "0.1.0"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    observer,
+    wx,
+    inets,
+    ssl,
+    jsx
+  ]},
+  {mod, {qfetch_app, []}},
+  {env, []}
+]}.
