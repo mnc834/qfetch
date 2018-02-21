@@ -5,7 +5,7 @@
 deps/
 ebin/
 _rel/
-vtrack.d
+qfetch.d
 relx
 .erlang.mk/
 *.plt
