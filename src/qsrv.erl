@@ -55,6 +55,7 @@ handle_cast(_Msg, State) ->
 handle_info({http, {Request_id, Result}}, #state{request_map = Request_map} = State) ->
   case ets:lookup(Request_map, Request_id) of
     [{Request_id, From}] ->
+      ets:delete(Request_map, Request_id),
       case  Result of
         {{_Version, 200, "OK"}, _Headers, Body} ->
           #{historicals := List} = jsx:decode(Body, [return_maps, {labels, atom}]),
