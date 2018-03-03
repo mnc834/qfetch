@@ -61,10 +61,12 @@ handle_info({http, {Request_id, Result}}, #state{request_map = Request_map} = St
           #{historicals := List} = jsx:decode(Body, [return_maps, {labels, atom}]),
           gen_server:reply(From, {ok, List});
         {{_Version, Status_code, Reason_phrase}, _Header, _Body} ->
-          gen_server:reply(From, {error, {http_reply, Status_code, Reason_phrase}})
+          gen_server:reply(From, {error, {http_reply, Status_code, Reason_phrase}});
+        {error, Reason} ->
+          gen_server:reply(From, {error, {httpc_request_failed, Reason}})
       end;
     [] ->
-      %%log some error
+      %%should not get here
       error
   end,
   {noreply, State};
