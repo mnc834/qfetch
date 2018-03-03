@@ -14,8 +14,10 @@
 
 %% @doc Start the application. Mainly useful for using `-s qfetch' as a command
 %% line switch to the VM to make lager start on boot.
+-spec start() -> ok.
 start() -> start(qfetch).
 
+-spec start(atom()) -> ok.
 start(App) ->
   start_ok(App, application:start(App, permanent)).
 

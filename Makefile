@@ -7,4 +7,6 @@ SP = 2
 
 DEPS = jsx
 
+PLT_APPS += inets
+
 include erlang.mk
